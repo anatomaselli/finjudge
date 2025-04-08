@@ -4,11 +4,17 @@ const cors = require('cors');
 const pool = require('./db');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
 
+// rota GET de teste
+app.get('/', (req, res) => {
+  res.send(' FinJudge backend está online!');
+});
+
+// rota POST para lead
 app.post('/api/lead', async (req, res) => {
   const { nome, telefone } = req.body;
 
@@ -25,5 +31,5 @@ app.post('/api/lead', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`FinJudge backend rodando em http://localhost:${PORT}`);
+  console.log(`FinJudge backend rodando na porta ${PORT}`);
 });
