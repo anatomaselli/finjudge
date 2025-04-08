@@ -3,8 +3,10 @@ const fetch = require('node-fetch');
 
 venom
   .create({
-    session: 'finjudge', // cria pasta .finjudge com sessão
-    multidevice: true // necessário para novo WhatsApp
+    session: 'finjudge',
+    multidevice: true,
+    headless: false, // abre o navegador visível
+    browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
   })
   .then((client) => start(client))
   .catch((err) => console.error('Erro ao iniciar Venom:', err));
@@ -14,16 +16,18 @@ function start(client) {
     if (message.body && !message.isGroupMsg) {
       const texto = message.body.trim();
 
-      const regex = /(\d+(?:[\.,]\d{1,2})?)\s*(?:no|em|na)?\s*(\w+)/i;
+      // Expressões como: "gastei 35 no mercado"
+      const regex = /(\d+(?:[\.,]\d{1,2})?)\s*(?:no|na|em)?\s*(\w+)/i;
       const match = texto.match(regex);
 
       if (!match) {
-        await client.sendText(message.from, 'Envie no formato: "gastei 50 no mercado"');
+        await client.sendText(message.from, '💬 Envie no formato: "gastei 50 no mercado"');
         return;
       }
 
       const valor = parseFloat(match[1].replace(',', '.'));
       const categoria = match[2].toLowerCase();
+      const telefone = message.from.replace(/\D/g, '');
 
       try {
         const response = await fetch('https://finjudge-backend.onrender.com/api/lead', {
@@ -31,18 +35,21 @@ function start(client) {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             nome: categoria,
-            telefone: message.from.replace(/\D/g, '')
-          })
+            telefone
+          }),
         });
 
         if (response.ok) {
-          await client.sendText(message.from, `✅ Gasto de R$${valor.toFixed(2)} em "${categoria}" registrado com sucesso!`);
+          await client.sendText(
+            message.from,
+            `✅ Gasto de R$ ${valor.toFixed(2)} em *${categoria}* salvo com sucesso!`
+          );
         } else {
           await client.sendText(message.from, '❌ Erro ao registrar o gasto. Tente novamente.');
         }
-      } catch (err) {
-        console.error(err);
-        await client.sendText(message.from, '⚠️ Erro ao conectar com o servidor.');
+      } catch (error) {
+        console.error(error);
+        await client.sendText(message.from, '⚠️ Erro de conexão com o servidor.');
       }
     }
   });
