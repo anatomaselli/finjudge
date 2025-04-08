@@ -2,19 +2,22 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FinJudge</title>
+  <title>Controle Financeiro via WhatsApp</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Controle Financeiro via WhatsApp</h1>
-    <form id="lead-form">
-      <input type="text" id="nome" placeholder="Seu nome" required>
-      <input type="tel" id="telefone" placeholder="Seu WhatsApp (com DDD)" required>
-      <button type="submit">Começar</button>
-    </form>
-  </div>
+  <form>
+    <h2>Controle Financeiro via WhatsApp</h2>
+
+    <input type="text" id="nome" placeholder="Seu nome" />
+    <div id="erroNome" class="erro-msg"></div>
+
+    <input type="text" id="telefone" placeholder="Seu telefone" />
+    <div id="erroTelefone" class="erro-msg"></div>
+
+    <button type="submit">Começar</button>
+  </form>
+
   <script src="script.js"></script>
 </body>
 </html>
