@@ -14,7 +14,28 @@ app.get('/', (req, res) => {
   res.send('FinJudge backend está online!');
 });
 
-// ➕ Rota que o frontend está tentando acessar
+// Rota de verificação se o lead já existe
+app.post('/api/lead/check', async (req, res) => {
+  const { nome, telefone } = req.body;
+
+  try {
+    const result = await pool.query(
+      'SELECT * FROM leads WHERE nome = $1 AND telefone = $2',
+      [nome, telefone]
+    );
+
+    if (result.rows.length > 0) {
+      res.json({ exists: true });
+    } else {
+      res.json({ exists: false });
+    }
+  } catch (error) {
+    console.error('Erro ao verificar lead:', error);
+    res.status(500).json({ erro: 'Erro ao verificar lead no banco de dados' });
+  }
+});
+
+// Rota para inserir novo lead
 app.post('/api/lead', async (req, res) => {
   const { nome, telefone } = req.body;
 
@@ -23,6 +44,7 @@ app.post('/api/lead', async (req, res) => {
       'INSERT INTO leads (nome, telefone) VALUES ($1, $2) RETURNING *',
       [nome, telefone]
     );
+
     res.status(201).json(result.rows[0]);
   } catch (error) {
     console.error('Erro ao salvar lead:', error);
