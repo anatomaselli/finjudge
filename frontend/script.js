@@ -71,7 +71,7 @@ document.querySelector('form').addEventListener('submit', async (e) => {
     console.log('Resposta do servidor:', data);
 
     // Redireciona para o WhatsApp com o número fixo do bot
-    const mensagem = `Olá, meu nome é ${nome} e meu telefone é ${telefone}. Quero começar a usar o FinJudge!`;
+    const mensagem = `🎉 Quero começar a usar o FinJudge!`;
     const numeroBot = '554799464149'; // número do bot no formato internacional (sem +)
     const urlWhatsApp = `https://wa.me/${numeroBot}?text=${encodeURIComponent(mensagem)}`;
     window.location.href = urlWhatsApp;
