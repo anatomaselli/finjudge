@@ -32,8 +32,8 @@ document.querySelector('form').addEventListener('submit', async (e) => {
     erroTelefone.textContent = 'O campo "Telefone" é obrigatório.';
     erroTelefone.style.display = 'block';
     temErro = true;
-  } else if (!/^[0-9]{10,13}$/.test(telefone)) {
-    erroTelefone.textContent = 'O campo "Telefone" deve conter apenas números válidos.';
+  } else if (!/^[0-9]+$/.test(telefone)) {
+    erroTelefone.textContent = 'O campo "Telefone" deve conter apenas números.';
     erroTelefone.style.display = 'block';
     temErro = true;
   }
@@ -63,18 +63,11 @@ document.querySelector('form').addEventListener('submit', async (e) => {
       body: JSON.stringify({ nome, telefone })
     });
 
-    if (!response.ok) {
-      throw new Error('Erro ao enviar os dados.');
-    }
-
     const data = await response.json();
     console.log('Resposta do servidor:', data);
 
-    // Redireciona para o WhatsApp com o número fixo do bot
-    const mensagem = `🎉 Quero começar a usar o FinJudge!`;
-    const numeroBot = '554799464149'; // número do bot no formato internacional (sem +)
-    const urlWhatsApp = `https://wa.me/${numeroBot}?text=${encodeURIComponent(mensagem)}`;
-    window.location.href = urlWhatsApp;
+    // Redireciona para o WhatsApp com mensagem simplificada
+    window.location.href = `https://wa.me/554799464149?text=${encodeURIComponent('Quero começar a usar o FinJudge!')}`;
 
   } catch (err) {
     console.error('Erro ao enviar lead:', err);
