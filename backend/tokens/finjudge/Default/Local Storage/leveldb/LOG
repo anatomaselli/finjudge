@@ -1,0 +1,9 @@
+2025/04/08-16:50:38.229 3003 Reusing MANIFEST /Users/ti/finjudge/backend/tokens/finjudge/Default/Local Storage/leveldb/MANIFEST-000001
+2025/04/08-16:50:38.231 3003 Recovering log #3
+2025/04/08-16:50:38.232 3003 Reusing old log /Users/ti/finjudge/backend/tokens/finjudge/Default/Local Storage/leveldb/000003.log 
+2025/04/08-22:32:19.476 3103 Level-0 table #5: started
+2025/04/08-22:32:19.481 3103 Level-0 table #5: 18180 bytes OK
+2025/04/08-22:32:19.487 3103 Delete type=0 #3
+2025/04/09-07:08:40.557 3103 Level-0 table #7: started
+2025/04/09-07:08:40.563 3103 Level-0 table #7: 14423 bytes OK
+2025/04/09-07:08:40.567 3103 Delete type=0 #4
