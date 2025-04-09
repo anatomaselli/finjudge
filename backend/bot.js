@@ -13,61 +13,72 @@ venom
 
 function start(client) {
   client.onMessage(async (message) => {
-    if (message.body && !message.isGroupMsg) {
-      const texto = message.body.trim();
-      const telefone = message.from.replace(/\D/g, '');
+    if (!message.body || message.isGroupMsg) return;
 
-      // Caso a pessoa envie uma mensagem de boas-vindas
-      if (/quero começar a usar o finjudge/i.test(texto)) {
-        await client.sendText(
-          message.from,
-          `🎉 Bem-vindo(a) ao FinJudge! Agora você pode registrar seus gastos assim:\n\n` +
-          `- 8,50 ifood\n- gastei 50 no mercado\n- gastei 20,30 com gasolina`
-        );
-        return;
-      }
+    const texto = message.body.trim();
+    const telefone = message.from.replace(/\D/g, '');
 
-      // Expressões como: "gastei 35 no mercado" ou "8,50 ifood"
-      const regex = /(?:gastei\s*)?(\d+(?:[.,]\d{1,2})?)(?:\s*com|\s*no|\s*na)?\s+(.+)/i;
-      const match = texto.match(regex);
+    // 1️⃣ Mensagem de boas-vindas
+    if (texto.toLowerCase().includes('quero começar a usar o finjudge')) {
+      await client.sendText(
+        message.from,
+        '👋 Bem-vindo ao FinJudge! Envie suas despesas no formato: \n\n💬 "gastei 15,90 no mercado"\n💬 "8,50 ifood"\n💬 "gastei 22 com gasolina"'
+      );
 
-      if (!match) {
-        await client.sendText(message.from,
-          '💬 Envie no formato:\n\n' +
-          '1️⃣ "Olá, meu nome é Fulano e meu telefone é 479XXXXXXXX. Quero começar a usar o FinJudge!"\n' +
-          '2️⃣ Ou: "gastei 50 no mercado"\n' +
-          '3️⃣ Ou: "8,50 ifood"'
-        );
-        return;
-      }
-
-      const valor = parseFloat(match[1].replace(',', '.'));
-      const categoria = match[2].trim().toLowerCase();
-
+      // Opcional: salvar no backend como lead
       try {
-        const response = await fetch('https://finjudge-backend.onrender.com/api/gasto', {
+        await fetch('https://finjudge-backend.onrender.com/api/lead', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
+            nome: 'Novo lead via WhatsApp',
             telefone,
-            valor,
-            categoria,
-            data: new Date().toISOString()
           }),
         });
-
-        if (response.ok) {
-          await client.sendText(
-            message.from,
-            `✅ Gasto de R$ ${valor.toFixed(2)} em *${categoria}* salvo com sucesso!`
-          );
-        } else {
-          await client.sendText(message.from, '❌ Erro ao registrar o gasto. Tente novamente.');
-        }
-      } catch (error) {
-        console.error('Erro ao enviar pro backend:', error);
-        await client.sendText(message.from, '⚠️ Erro de conexão com o servidor.');
+      } catch (err) {
+        console.error('Erro ao registrar lead inicial:', err);
       }
+
+      return;
+    }
+
+    // 2️⃣ Gasto no formato livre
+    const regex = /(\d+(?:[\.,]\d{1,2})?)\s*(?:com|no|na|em)?\s*(\w+)/i;
+    const match = texto.match(regex);
+
+    if (!match) {
+      await client.sendText(
+        message.from,
+        '💬 Envie no formato:\n\n1️⃣ "gastei 50 no mercado"\n2️⃣ "8,50 ifood"\n3️⃣ "gastei 7,14 com uber"'
+      );
+      return;
+    }
+
+    const valor = parseFloat(match[1].replace(',', '.'));
+    const categoria = match[2].toLowerCase();
+
+    try {
+      const response = await fetch('https://finjudge-backend.onrender.com/api/gasto', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          telefone,
+          valor,
+          categoria,
+        }),
+      });
+
+      if (response.ok) {
+        await client.sendText(
+          message.from,
+          `✅ Gasto de R$ ${valor.toFixed(2)} em *${categoria}* salvo com sucesso!`
+        );
+      } else {
+        await client.sendText(message.from, '❌ Erro ao registrar o gasto. Tente novamente.');
+      }
+    } catch (error) {
+      console.error(error);
+      await client.sendText(message.from, '⚠️ Erro de conexão com o servidor.');
     }
   });
 }
