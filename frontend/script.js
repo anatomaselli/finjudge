@@ -67,7 +67,7 @@ document.querySelector('form').addEventListener('submit', async (e) => {
     console.log('Resposta do servidor:', data);
 
     // Redireciona para o WhatsApp com mensagem simplificada
-    window.location.href = `https://wa.me/554799464149?text=${encodeURIComponent('Quero começar a usar o FinJudge!')}`;
+    window.location.href = `https://wa.me/5547996995329?text=${encodeURIComponent('Quero começar a usar o FinJudge!')}`;
 
   } catch (err) {
     console.error('Erro ao enviar lead:', err);
