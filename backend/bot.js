@@ -74,11 +74,11 @@ function start(client) {
           `✅ Gasto de R$ ${valor.toFixed(2)} em *${categoria}* salvo com sucesso!`
         );
       } else {
-        await client.sendText(message.from, '❌ Erro ao registrar o gasto. Tente novamente.');
+        await client.sendText(message.from, 'Erro ao registrar o gasto. Tente novamente.');
       }
     } catch (error) {
       console.error(error);
-      await client.sendText(message.from, '⚠️ Erro de conexão com o servidor.');
+      await client.sendText(message.from, 'Erro de conexão com o servidor.');
     }
   });
 }

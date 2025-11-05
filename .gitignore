@@ -1,2 +1,39 @@
+# ========================================
+# ARQUIVOS DE CONFIGURAÇÃO SENSÍVEIS
+# ========================================
+.env
+.env.local
+.env.render
 backend/.env
+backend/.env.local
+backend/.env.render
+
+# ========================================
+# DEPENDÊNCIAS E BUILD
+# ========================================
+node_modules/
+backend/node_modules/
+frontend/node_modules/
+
+# ========================================
+# CACHE E TOKENS DO WHATSAPP
+# ========================================
+.wwebjs_auth/
+.wwebjs_cache/
+backend/.wwebjs_auth/
+backend/.wwebjs_cache/
+backend/tokens/
+tokens/
+
+# ========================================
+# ARQUIVOS TEMPORÁRIOS DO SISTEMA
+# ========================================
 .DS_Store
+Thumbs.db
+
+# ========================================
+# BUILD FRONTEND (caso use Netlify)
+# ========================================
+dist/
+build/
+.cache/

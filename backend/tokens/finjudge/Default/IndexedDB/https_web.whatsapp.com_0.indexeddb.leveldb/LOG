@@ -1,54 +1,14 @@
-2025/04/08-16:50:38.838 a403 Reusing MANIFEST /Users/ti/finjudge/backend/tokens/finjudge/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2025/04/08-16:50:38.838 a403 Recovering log #39
-2025/04/08-16:50:38.843 a403 Reusing old log /Users/ti/finjudge/backend/tokens/finjudge/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000039.log 
-2025/04/08-16:50:39.120 f903 Level-0 table #44: started
-2025/04/08-16:50:39.124 f903 Level-0 table #44: 230805 bytes OK
-2025/04/08-16:50:39.125 f903 Delete type=0 #39
-2025/04/08-16:50:39.125 6d07 Manual compaction at level-0 from '\x00\x17\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x18\x00\x00\x00' @ 0 : 0; will stop at (end)
-2025/04/08-16:50:39.126 6d07 Level-0 table #46: started
-2025/04/08-16:50:39.127 6d07 Level-0 table #46: 915 bytes OK
-2025/04/08-16:50:39.128 6d07 Delete type=0 #43
-2025/04/08-16:50:39.129 6d07 Manual compaction at level-0 from '\x00\x18\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x19\x00\x00\x00' @ 0 : 0; will stop at '\x00\x18\x00\x00\x05' @ 67467 : 0
-2025/04/08-16:50:39.129 6d07 Compacting 1@0 + 1@1 files
-2025/04/08-16:50:39.133 6d07 Generated table #47@0: 4092 keys, 103178 bytes
-2025/04/08-16:50:39.133 6d07 Compacted 1@0 + 1@1 files => 103178 bytes
-2025/04/08-16:50:39.139 6d07 compacted to: files[ 0 1 1 0 0 0 0 ]
-2025/04/08-16:50:39.139 6d07 Delete type=2 #46
-2025/04/08-16:50:39.146 6d07 Manual compaction at level-0 from '\x00\x18\x00\x00\x05' @ 67467 : 0 .. '\x00\x19\x00\x00\x00' @ 0 : 0; will stop at (end)
-2025/04/08-16:50:39.147 6d07 Level-0 table #49: started
-2025/04/08-16:50:39.147 6d07 Level-0 table #49: 291 bytes OK
-2025/04/08-16:50:39.148 6d07 Delete type=0 #45
-2025/04/08-16:50:39.148 6d07 Delete type=2 #44
-2025/04/08-16:50:39.148 6d07 Manual compaction at level-0 from '\x00\x19\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x1a\x00\x00\x00' @ 0 : 0; will stop at '\x00\x19\x00\x00\x05' @ 67477 : 0
-2025/04/08-16:50:39.148 6d07 Compacting 1@0 + 1@1 files
-2025/04/08-16:50:39.151 6d07 Generated table #50@0: 4090 keys, 103070 bytes
-2025/04/08-16:50:39.151 6d07 Compacted 1@0 + 1@1 files => 103070 bytes
-2025/04/08-16:50:39.152 6d07 compacted to: files[ 0 1 1 0 0 0 0 ]
-2025/04/08-16:50:39.152 6d07 Delete type=2 #49
-2025/04/08-16:50:39.152 6d07 Manual compaction at level-0 from '\x00\x19\x00\x00\x05' @ 67477 : 0 .. '\x00\x1a\x00\x00\x00' @ 0 : 0; will stop at (end)
-2025/04/08-16:50:39.803 a403 Compacting 1@1 + 1@2 files
-2025/04/08-16:50:39.815 a403 Generated table #51@1: 14320 keys, 510003 bytes
-2025/04/08-16:50:39.815 a403 Compacted 1@1 + 1@2 files => 510003 bytes
-2025/04/08-16:50:39.816 a403 compacted to: files[ 0 0 1 0 0 0 0 ]
-2025/04/08-16:50:39.816 a403 Delete type=2 #41
-2025/04/08-16:50:39.816 a403 Delete type=2 #50
-2025/04/08-16:50:39.816 a403 Delete type=2 #47
-2025/04/08-16:55:40.586 f903 Level-0 table #53: started
-2025/04/08-16:55:40.591 f903 Level-0 table #53: 197279 bytes OK
-2025/04/08-16:55:40.592 f903 Delete type=0 #48
-2025/04/08-16:55:40.593 6d07 Manual compaction at level-0 from '\x00\x1c\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x1d\x00\x00\x00' @ 0 : 0; will stop at (end)
-2025/04/08-16:57:31.028 f903 Compacting 1@1 + 1@2 files
-2025/04/08-16:57:31.040 f903 Generated table #54@1: 16015 keys, 569131 bytes
-2025/04/08-16:57:31.040 f903 Compacted 1@1 + 1@2 files => 569131 bytes
-2025/04/08-16:57:31.042 f903 compacted to: files[ 0 0 1 0 0 0 0 ]
-2025/04/08-16:57:31.042 f903 Delete type=2 #51
-2025/04/08-16:57:31.042 f903 Delete type=2 #53
-2025/04/09-11:09:54.607 a403 Level-0 table #56: started
-2025/04/09-11:09:54.633 a403 Level-0 table #56: 1083756 bytes OK
-2025/04/09-11:09:54.635 a403 Delete type=0 #52
-2025/04/09-11:10:22.479 a403 Compacting 1@1 + 1@2 files
-2025/04/09-11:10:22.509 a403 Generated table #57@1: 28108 keys, 980449 bytes
-2025/04/09-11:10:22.510 a403 Compacted 1@1 + 1@2 files => 980449 bytes
-2025/04/09-11:10:22.510 a403 compacted to: files[ 0 0 1 0 0 0 0 ]
-2025/04/09-11:10:22.511 a403 Delete type=2 #56
-2025/04/09-11:10:22.511 a403 Delete type=2 #54
+2025/11/04-08:56:35.912 a1afb Reusing MANIFEST /Users/ti/Documents/finjudge/backend/tokens/finjudge/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/11/04-08:56:35.912 a1afb Recovering log #126
+2025/11/04-08:56:35.932 a1afb Reusing old log /Users/ti/Documents/finjudge/backend/tokens/finjudge/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000126.log 
+2025/11/04-08:56:37.438 a1b07 Manual compaction at level-0 from '\x00>\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00?\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/11/04-08:56:37.443 a1b09 Level-0 table #131: started
+2025/11/04-08:56:37.460 a1b09 Level-0 table #131: 937484 bytes OK
+2025/11/04-08:56:37.462 a1b09 Delete type=0 #126
+2025/11/04-08:56:37.463 a1afb Manual compaction at level-0 from '\x00?\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00@\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/11/04-08:56:38.189 a1afd Compacting 1@1 + 1@2 files
+2025/11/04-08:56:38.206 a1afd Generated table #132@1: 24799 keys, 836394 bytes
+2025/11/04-08:56:38.206 a1afd Compacted 1@1 + 1@2 files => 836394 bytes
+2025/11/04-08:56:38.211 a1afd compacted to: files[ 0 0 1 0 0 0 0 ]
+2025/11/04-08:56:38.211 a1afd Delete type=2 #128
+2025/11/04-08:56:38.211 a1afd Delete type=2 #131
