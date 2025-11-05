@@ -1,10 +1,15 @@
 
 const { Pool } = require('pg');
+const dns = require('dns');
 require('dotenv').config();
 
 const isPooler =
   String(process.env.PGPORT) === '6543' ||
   (process.env.PGHOST || '').includes('pooler.supabase.com');
+
+  const lookup = process.env.FORCE_IPV4 === '1'
+  ? (hostname, _opts, cb) => dns.lookup(hostname, { family: 4 }, cb)
+  : undefined;
 
 // SSL: require (p/ Supabase) | disable (p/ banco sem SSL)
 const sslMode = (process.env.PGSSLMODE || 'require').toLowerCase();
@@ -35,3 +40,4 @@ pool.connect()
   .catch(e => console.error('❌ Erro ao conectar ao Postgres:', e.message));
 
 module.exports = pool;
+
