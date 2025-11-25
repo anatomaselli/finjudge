@@ -89,6 +89,8 @@ finjudge/
 │   ├── .env
 │   ├── package.json
 │   ├── package-lock.json
+│   ├── tests
+│   ├── server.test.js
 ├── frontend/
 │   ├── index.html
 │   ├── script.js
