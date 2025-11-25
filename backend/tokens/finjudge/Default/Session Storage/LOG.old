@@ -1,2 +1,3 @@
-2025/11/03-21:36:28.483 8ac38 Creating DB /Users/ti/Documents/finjudge/backend/tokens/finjudge/Default/Session Storage since it was missing.
-2025/11/03-21:36:28.487 8ac38 Reusing MANIFEST /Users/ti/Documents/finjudge/backend/tokens/finjudge/Default/Session Storage/MANIFEST-000001
+2025/11/04-08:56:34.257 a1b40 Reusing MANIFEST /Users/ti/Documents/finjudge/backend/tokens/finjudge/Default/Session Storage/MANIFEST-000001
+2025/11/04-08:56:34.257 a1b40 Recovering log #3
+2025/11/04-08:56:34.257 a1b40 Reusing old log /Users/ti/Documents/finjudge/backend/tokens/finjudge/Default/Session Storage/000003.log 

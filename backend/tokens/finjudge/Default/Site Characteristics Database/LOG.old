@@ -1,2 +1,3 @@
-2025/11/03-21:36:28.357 8ac15 Creating DB /Users/ti/Documents/finjudge/backend/tokens/finjudge/Default/Site Characteristics Database since it was missing.
-2025/11/03-21:36:28.377 8ac15 Reusing MANIFEST /Users/ti/Documents/finjudge/backend/tokens/finjudge/Default/Site Characteristics Database/MANIFEST-000001
+2025/11/04-08:56:34.046 a1b08 Reusing MANIFEST /Users/ti/Documents/finjudge/backend/tokens/finjudge/Default/Site Characteristics Database/MANIFEST-000001
+2025/11/04-08:56:34.048 a1b08 Recovering log #3
+2025/11/04-08:56:34.049 a1b08 Reusing old log /Users/ti/Documents/finjudge/backend/tokens/finjudge/Default/Site Characteristics Database/000003.log 

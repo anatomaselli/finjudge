@@ -1,4 +1,3 @@
-
 const { Pool } = require('pg');
 const dns = require('dns');
 require('dotenv').config();
@@ -7,7 +6,7 @@ const isPooler =
   String(process.env.PGPORT) === '6543' ||
   (process.env.PGHOST || '').includes('pooler.supabase.com');
 
-  const lookup = process.env.FORCE_IPV4 === '1'
+const lookup = process.env.FORCE_IPV4 === '1'
   ? (hostname, _opts, cb) => dns.lookup(hostname, { family: 4 }, cb)
   : undefined;
 
@@ -35,9 +34,11 @@ const pool = new Pool({
   ...(options ? { options } : {})
 });
 
-pool.connect()
-  .then(c => { console.log('✅ Conectado ao Postgres'); c.release(); })
-  .catch(e => console.error('❌ Erro ao conectar ao Postgres:', e.message));
+// 🔹 Só conecta e faz log se NÃO estiver em ambiente de teste
+if (process.env.NODE_ENV !== 'test') {
+  pool.connect()
+    .then(c => { console.log('✅ Conectado ao Postgres'); c.release(); })
+    .catch(e => console.error('❌ Erro ao conectar ao Postgres:', e.message));
+}
 
 module.exports = pool;
-

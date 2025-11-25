@@ -98,6 +98,123 @@ finjudge/
 
 ---
 
+# 📌 Testes Automatizados (Jest + Supertest + Mock do PostgreSQL)
+
+Este projeto utiliza **Jest** e **Supertest** para testes automatizados
+das rotas do backend, garantindo confiabilidade, alta cobertura e
+execução rápida sem necessidade de acessar o banco real.
+
+------------------------------------------------------------------------
+
+## ✔️ Estrutura dos testes
+
+Os testes ficam na pasta:
+
+    /backend/tests
+
+Arquivo principal:
+
+    tests/server.test.js
+
+Rotas cobertas:
+
+-   `GET /` (healthcheck)
+-   `POST /api/lead/check`
+-   `POST /api/lead`
+-   `POST /api/gasto` (incluindo fallback para coluna `descricao`)
+-   `GET /api/start-whatsapp`
+
+Todos os fluxos principais e cenários de erro foram testados, garantindo
+robustez e consistência no backend.
+
+------------------------------------------------------------------------
+
+## 🧪 Mock do Banco de Dados (PostgreSQL)
+
+Para evitar dependência com banco real durante a execução dos testes, o
+módulo `db.js` é mockado:
+
+``` js
+jest.mock('../db', () => ({
+  query: jest.fn(),
+}));
+```
+
+Isso permite:
+
+-   simular respostas do banco\
+-   simular erros (ex: códigos de erro como `42703`)\
+-   evitar conexões reais com o Postgres\
+-   executar testes rapidamente sem infraestrutura externa
+
+Além disso, o `console.error()` é silenciado para manter a saída limpa:
+
+``` js
+beforeAll(() => {
+  jest.spyOn(console, 'error').mockImplementation(() => {});
+});
+```
+
+Resultado: **terminal limpo, legível e profissional**.
+
+------------------------------------------------------------------------
+
+## ▶️ Como executar os testes
+
+Na raiz do backend:
+
+``` sh
+cd backend
+NODE_ENV=test npm test
+```
+
+Se seu `package.json` já tiver o script configurado:
+
+``` sh
+npm test
+```
+
+------------------------------------------------------------------------
+
+## ✔️ Resultado esperado dos testes
+
+-   relatório completo do Jest\
+-   **coverage** da aplicação\
+-   saída limpa\
+-   execução rápida graças ao mock do banco
+
+------------------------------------------------------------------------
+
+## 📊 Relatório de Cobertura
+
+O Jest gera automaticamente:
+
+    coverage/lcov-report/index.html
+
+Abra esse arquivo no navegador para visualizar:
+
+-   porcentagem geral de cobertura\
+-   branches, funções, statements\
+-   arquivos e trechos não cobertos\
+-   visual amigável para apresentações
+
+O projeto atualmente possui **alta cobertura (\~95%)**, reflexo da
+testagem completa das rotas principais.
+
+------------------------------------------------------------------------
+
+## 📝 Licença
+
+Este projeto segue a licença definida no repositório principal.
+
+------------------------------------------------------------------------
+
+## 💡 Contribuições
+
+Pull requests são bem-vindos!
+
+------------------------------------------------------------------------
+
 ## 🔹 Status Atual do Projeto
 | Etapa                            | Status        |
 |----------------------------------|---------------|

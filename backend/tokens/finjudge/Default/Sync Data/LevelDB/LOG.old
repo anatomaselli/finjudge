@@ -1,2 +1,3 @@
-2025/11/03-21:36:28.350 8abfc Creating DB /Users/ti/Documents/finjudge/backend/tokens/finjudge/Default/Sync Data/LevelDB since it was missing.
-2025/11/03-21:36:28.372 8abfc Reusing MANIFEST /Users/ti/Documents/finjudge/backend/tokens/finjudge/Default/Sync Data/LevelDB/MANIFEST-000001
+2025/11/04-08:56:34.037 a1afd Reusing MANIFEST /Users/ti/Documents/finjudge/backend/tokens/finjudge/Default/Sync Data/LevelDB/MANIFEST-000001
+2025/11/04-08:56:34.048 a1afd Recovering log #3
+2025/11/04-08:56:34.049 a1afd Reusing old log /Users/ti/Documents/finjudge/backend/tokens/finjudge/Default/Sync Data/LevelDB/000003.log 
